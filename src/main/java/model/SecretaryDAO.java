@@ -86,11 +86,30 @@ public class SecretaryDAO {
             pstmt.executeUpdate();
         }
     }
-    
+ // CHECK IF USERNAME EXISTS (σε όλους τους πίνακες χρηστών)
+    public boolean usernameExists(String username) throws Exception {
+        String sql = "SELECT username FROM professors WHERE username=? " +
+                     "UNION SELECT username FROM students WHERE username=? " +
+                     "UNION SELECT username FROM secretaries WHERE username=?";
+        
+        try (Connection con = getConnection();
+             PreparedStatement pstmt = con.prepareStatement(sql)) {
+            
+            pstmt.setString(1, username);
+            pstmt.setString(2, username);
+            pstmt.setString(3, username);
+            
+            try (ResultSet rs = pstmt.executeQuery()) {
+                return rs.next();
+            }
+        }
+    }
     // 4. CREATE PROFESSOR
     public void createProfessor(String username, String name, String surname, 
                                  String department, String specialty, String password) throws Exception {
-        
+    	if (usernameExists(username)) {
+    	    throw new Exception("Το username '" + username + "' υπάρχει ήδη.");
+    	}
         String hashedPassword = BCrypt.hashpw(password, BCrypt.gensalt());
         
         String sql = "INSERT INTO professors (username, name, surname, department, specialty, password) VALUES (?, ?, ?, ?, ?, ?)";
@@ -112,7 +131,9 @@ public class SecretaryDAO {
     // 5. CREATE STUDENT
     public void createStudent(String username, String name, String surname, 
                                String department, int registrationNumber, String password) throws Exception {
-        
+    	 if (usernameExists(username)) {
+    	        throw new Exception("Το username '" + username + "' υπάρχει ήδη.");
+    	    }
         String hashedPassword = BCrypt.hashpw(password, BCrypt.gensalt());
         
         String sql = "INSERT INTO students (registration_number, username, name, surname, department, password) VALUES (?, ?, ?, ?, ?, ?)";

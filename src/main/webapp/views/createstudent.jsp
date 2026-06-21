@@ -1,4 +1,5 @@
 <%@ page contentType="text/html;charset=UTF-8" pageEncoding="UTF-8" %>
+<%@ taglib uri="jakarta.tags.core" prefix="c" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -120,6 +121,11 @@
 
         <!-- Form -->
         <div class="form-wrapper">
+
+            <c:if test="${not empty errorMessage}">
+                <p style="color:red; text-align:center;">${errorMessage}</p>
+            </c:if>
+
             <form action="${pageContext.request.contextPath}/SecretaryServlet" method="POST">
                 <input type="hidden" name="action" value="createstudent" />
 

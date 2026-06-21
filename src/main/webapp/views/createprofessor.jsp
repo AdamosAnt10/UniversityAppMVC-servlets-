@@ -1,9 +1,10 @@
 <%@ page contentType="text/html;charset=UTF-8" pageEncoding="UTF-8" %>
+<%@ taglib uri="jakarta.tags.core" prefix="c" %>
 <!DOCTYPE html>
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>Εγγραφή Φοιτητή</title>
+    <title>Εγγραφή Καθηγητή</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -114,17 +115,19 @@
     <div class="form-container">
 
         <div class="header">
-            <h2>Εγγραφή Νέου Φοιτητή</h2>
+            <h2>Εγγραφή Νέου Καθηγητή</h2>
         </div>
 
         <div class="form-wrapper">
+
+            <c:if test="${not empty errorMessage}">
+                <p style="color:red; text-align:center;">${errorMessage}</p>
+            </c:if>
+
             <form action="${pageContext.request.contextPath}/SecretaryServlet" method="POST">
-                <input type="hidden" name="action" value="createstudent" />
+                <input type="hidden" name="action" value="createprofessor" />
 
-                <label for="reg_num">Αριθμός Μητρώου (ΑΜ):</label>
-                <input type="number" id="reg_num" name="registration_number" required />
-
-                <label for="username">Username Φοιτητή:</label>
+                <label for="username">Username Καθηγητή:</label>
                 <input type="text" id="username" name="username" required />
 
                 <label for="name">Όνομα:</label>
@@ -135,12 +138,15 @@
 
                 <label for="department">Τμήμα:</label>
                 <input type="text" id="department" name="department" required />
+                
+                <label for="specialty">Ειδικότητα:</label>
+                <input type="text" id="specialty" name="specialty" required/>
 
                 <label for="password">Κωδικός Πρόσβασης (Password):</label>
                 <input type="password" id="password" name="password" required />
 
                 <br><br>
-                <button type="submit" class="btn">Εγγραφή Φοιτητή</button>
+                <button type="submit" class="btn">Εγγραφή Καθηγητή</button>
             </form>
 
             <br>

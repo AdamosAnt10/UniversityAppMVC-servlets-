@@ -75,7 +75,7 @@ public class SecretaryServlet extends HttpServlet {
             } catch(Exception e) {
                 request.setAttribute("errorMessage", "Σφάλμα κατά τη δημιουργία: " + e.getMessage());
             }
-            request.getRequestDispatcher("/views/dashboardsec.jsp").forward(request, response);
+            request.getRequestDispatcher("/views/createprofessor.jsp").forward(request, response);
             return;
         }
         
@@ -95,7 +95,7 @@ public class SecretaryServlet extends HttpServlet {
             } catch(Exception e) {
                 request.setAttribute("errorMessage", "Σφάλμα κατά τη δημιουργία: " + e.getMessage());
             }
-            request.getRequestDispatcher("/views/dashboardsec.jsp").forward(request, response);
+            request.getRequestDispatcher("/views/createstudent.jsp").forward(request, response);
             return;
         }
         

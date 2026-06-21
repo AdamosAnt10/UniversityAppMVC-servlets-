@@ -29,7 +29,7 @@ public class SecretaryServlet extends HttpServlet {
         
         String action = request.getParameter("action");
         
-        // 1. ΑΝΑΘΕΣΗ ΚΑΘΗΓΗΤΗ
+        
         if ("assignprofessor".equals(action)) {
             String courseID = request.getParameter("course_id");
             String profUsername = request.getParameter("professor_username");
@@ -44,7 +44,7 @@ public class SecretaryServlet extends HttpServlet {
             return; 
         }
         
-        //2. ΔΗΜΙΟΥΡΓΙΑ ΜΑΘΗΜΑΤΟΣ
+       
         if ("createCourse".equals(action)) {
             String courseID = request.getParameter("course_id");
             String courseName = request.getParameter("course_name");
@@ -60,7 +60,7 @@ public class SecretaryServlet extends HttpServlet {
             return;
         }
         
-        // 3. ΕΓΓΡΑΦΗ ΚΑΘΗΓΗΤΗ
+        
         if ("createprofessor".equals(action)) {
             String username = request.getParameter("username");
             String name = request.getParameter("name");
@@ -79,7 +79,7 @@ public class SecretaryServlet extends HttpServlet {
             return;
         }
         
-        //4. ΕΓΓΡΑΦΗ ΦΟΙΤΗΤΗ
+       
         if ("createstudent".equals(action)) {
             String am = request.getParameter("registration_number");
             String username = request.getParameter("username");

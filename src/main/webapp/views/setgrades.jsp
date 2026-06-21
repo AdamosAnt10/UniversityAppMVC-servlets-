@@ -112,12 +112,12 @@
 <div class="content">
     <div class="form-container">
 
-        <!-- Header -->
+        
         <div class="header">
             <h2>Καταχώριση Νέου Βαθμού</h2>
         </div>
 
-        <!-- Form -->
+        
         <div class="form-wrapper">
             <form action="${pageContext.request.contextPath}/ProfessorServlet" method="POST">
                 <input type="hidden" name="action" value="addGrade" />

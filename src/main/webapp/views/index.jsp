@@ -23,20 +23,20 @@
             line-height: 1.6;
         }
 
-        /* Hero Image */
+       
         .hero-img {
             width: 100%;
             max-height: 260px;
             object-fit: cover;
         }
 
-        /* Content */
+      
         .content {
             max-width: 760px;
             margin: 0 auto;
             padding: 50px 1.5rem 60px;
             text-align: center;
-            flex: 1; /* Σπρώχνει το footer στο τέλος */
+            flex: 1; 
         }
 
         .content h1 {
@@ -76,7 +76,7 @@
             background: #1a3560;
         }
 
-        /* Footer */
+       
         footer {
             background-color: #0d1f3c;
             color: rgba(255,255,255,0.7);

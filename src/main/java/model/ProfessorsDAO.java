@@ -15,7 +15,7 @@ public class ProfessorsDAO {
         return DriverManager.getConnection(DB_URL, DB_USER, DB_PASS);
     }
 
-    // 1. AUTHENTICATE
+   
     public Professors authenticate(String username, String password) throws Exception {
         String sql = "SELECT * FROM professors WHERE username=?";
         try (Connection con = getConnection();
@@ -42,7 +42,7 @@ public class ProfessorsDAO {
         return null;
     }
 
-    // 2. VIEW COURSES GRADES
+   
     public List<Grades> viewCoursesGrades(String courseName) throws Exception {
         List<Grades> grades = new ArrayList<>();
 
@@ -73,7 +73,7 @@ public class ProfessorsDAO {
         return grades;
     }
 
-    // 3. SET GRADES
+    
     public void setGrades(int registration_number, String course_id, float grade) throws Exception {
         String sql = "INSERT INTO grades(registration_number, course_id, grade) VALUES(?, ?, ?)";
 

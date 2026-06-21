@@ -35,7 +35,7 @@ public class LoginServlet extends HttpServlet {
         String password = request.getParameter("password");
         String rememberMe = request.getParameter("rememberMe");
 
-        // 1. ΕΛΕΓΧΟΣ ΑΝ ΕΙΝΑΙ ΓΡΑΜΜΑΤΕΙΑ
+        // ελεγχος αν είναι γραμματεία
         try {
             Secretaries secretary = secretaryDAO.authenticate(username, password);
             if (secretary != null) {
@@ -56,10 +56,10 @@ public class LoginServlet extends HttpServlet {
                 return;
             }
         } catch (Exception e) {
-            // Δεν βρέθηκε ως γραμματεία, συνεχίζουμε
+            
         }
 
-        // 2. ΕΛΕΓΧΟΣ ΑΝ ΕΙΝΑΙ ΚΑΘΗΓΗΤΗΣ
+        // ελεγχος αν ειναι καθηγητης
         try {
             Professors professor = professorsDAO.authenticate(username, password);
             if (professor != null) {
@@ -82,10 +82,10 @@ public class LoginServlet extends HttpServlet {
                 return;
             }
         } catch (Exception e) {
-            // Δεν βρέθηκε ως καθηγητής, συνεχίζουμε
+           
         }
 
-        // 3. ΕΛΕΓΧΟΣ ΑΝ ΕΙΝΑΙ ΦΟΙΤΗΤΗΣ
+        // ελεγχος αν ειναι φοιτητης
         try {
             Students student = studentDAO.authenticate(username, password);
             if (student != null) {
@@ -108,7 +108,7 @@ public class LoginServlet extends HttpServlet {
                 return;
             }
         } catch (Exception e) {
-            // Δεν βρέθηκε ως φοιτητής
+            
         }
 
         // 4. ΑΝ ΔΕΝ ΒΡΕΘΗΚΕ ΠΟΥΘΕΝΑ

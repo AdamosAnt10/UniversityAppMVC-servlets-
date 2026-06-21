@@ -47,13 +47,13 @@ public class StudentServlet extends HttpServlet {
         }
         String action = request.getParameter("action");
 
-        // Κοινά attributes για όλα τα actions
+       
         request.setAttribute("StudentAM", currentAM);
         String fullName = session.getAttribute("StudentName") + " " + session.getAttribute("StudentSurname");
         request.setAttribute("studentName", fullName);
         
         try {
-            // 1. ΒΑΘΜΟΛΟΓΙΑ ΑΝΑ ΕΞΑΜΗΝΟ
+            
             if ("bySemester".equals(action)) {
                 int semester = Integer.parseInt(request.getParameter("semester"));
                 List<Grades> grades = studentDAO.getGradesBySemester(currentAM, semester);
@@ -63,7 +63,7 @@ public class StudentServlet extends HttpServlet {
                 request.getRequestDispatcher("/views/grades.jsp").forward(request, response);
                 return;
             }
-            // 2. ΣΥΝΟΛΙΚΗ ΒΑΘΜΟΛΟΓΙΑ
+           
             if ("average".equals(action)) {
                 List<Grades> grades = studentDAO.getGradesByAM(currentAM);
                 double average = studentDAO.getAverageGrade(currentAM);
@@ -73,7 +73,7 @@ public class StudentServlet extends HttpServlet {
                 request.getRequestDispatcher("/views/grades.jsp").forward(request, response);
                 return;
             }
-            // 3. ΟΛΕΣ ΟΙ ΒΑΘΜΟΛΟΓΙΕΣ (default)
+           
             List<Grades> grades = studentDAO.getGradesByAM(currentAM);
             request.setAttribute("grades", grades);
             request.setAttribute("filterType", "all");

@@ -15,7 +15,7 @@ public class StudentDAO {
         return DriverManager.getConnection(DB_URL, DB_USER, DB_PASS);
     }
     
-    // 1. AUTHENTICATE
+  
     public Students authenticate(String username, String password) throws Exception {
         String sql = "SELECT * FROM students WHERE username=?";
         
@@ -43,7 +43,7 @@ public class StudentDAO {
         return null;
     }
     
-    // 2. GET GRADES BY AM
+    
     public List<Grades> getGradesByAM(int registrationNumber) throws Exception {
         List<Grades> grades = new ArrayList<>();
         String sql = "SELECT g.*, s.name, s.surname FROM grades g " +
@@ -69,7 +69,7 @@ public class StudentDAO {
         }
         return grades;
     }
- // Βαθμολογία ανά εξάμηνο
+
     public List<Grades> getGradesBySemester(int registrationNumber, int semester) throws Exception {
         List<Grades> grades = new ArrayList<>();
         String sql = "SELECT g.*, s.name, s.surname FROM grades g " +
@@ -97,7 +97,7 @@ public class StudentDAO {
         return grades;
     }
 
-    // Συνολικός μέσος όρος
+  
     public double getAverageGrade(int registrationNumber) throws Exception {
         String sql = "SELECT AVG(grade) as average FROM grades WHERE registration_number = ?";
 

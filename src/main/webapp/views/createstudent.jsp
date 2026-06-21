@@ -114,12 +114,12 @@
 <div class="content">
     <div class="form-container">
 
-        <!-- Header -->
+       
         <div class="header">
             <h2>Εγγραφή Νέου Φοιτητή</h2>
         </div>
 
-        <!-- Form -->
+    
         <div class="form-wrapper">
 
             <c:if test="${not empty errorMessage}">

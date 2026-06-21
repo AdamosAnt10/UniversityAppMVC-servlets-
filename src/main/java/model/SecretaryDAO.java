@@ -15,7 +15,7 @@ public class SecretaryDAO {
         return DriverManager.getConnection(DB_URL, DB_USER, DB_PASS);
     }
     
-    // 1. AUTHENTICATE
+   
     public static Secretaries authenticate(String username, String password) throws Exception {
         String sql = "SELECT * FROM secretaries WHERE username=?";
         try (Connection con = getConnection();
@@ -43,7 +43,7 @@ public class SecretaryDAO {
         return null;
     }
     
-    // 2. VIEW ALL COURSES WITH TEACHERS
+  
     public List<Professors> viewAllCoursesWithTeachers() throws Exception {
         List<Professors> list = new ArrayList<>();
         
@@ -72,7 +72,7 @@ public class SecretaryDAO {
         return list;
     }
     
-    // 3. CREATE COURSE
+   
     public void createCourse(String courseID, String courseName, String professorUsername) throws Exception {
         String sql = "INSERT INTO courses (course_id, coursename, professorsusername) VALUES (?, ?, ?)";
         
@@ -86,7 +86,7 @@ public class SecretaryDAO {
             pstmt.executeUpdate();
         }
     }
- // CHECK IF USERNAME EXISTS (σε όλους τους πίνακες χρηστών)
+ //έλεγχος αν το username υπάρχει ήδη
     public boolean usernameExists(String username) throws Exception {
         String sql = "SELECT username FROM professors WHERE username=? " +
                      "UNION SELECT username FROM students WHERE username=? " +
@@ -104,7 +104,7 @@ public class SecretaryDAO {
             }
         }
     }
-    // 4. CREATE PROFESSOR
+   
     public void createProfessor(String username, String name, String surname, 
                                  String department, String specialty, String password) throws Exception {
     	if (usernameExists(username)) {
@@ -128,7 +128,7 @@ public class SecretaryDAO {
         }
     }
     
-    // 5. CREATE STUDENT
+   
     public void createStudent(String username, String name, String surname, 
                                String department, int registrationNumber, String password) throws Exception {
     	 if (usernameExists(username)) {
@@ -152,7 +152,7 @@ public class SecretaryDAO {
         }
     }
     
-    // 6. ASSIGN PROFESSOR TO COURSE
+   
     public void assignProfessorToCourse(String courseID, String professorUsername) throws Exception {
         String sql = "UPDATE courses SET professorsusername=? WHERE course_id=?";
         

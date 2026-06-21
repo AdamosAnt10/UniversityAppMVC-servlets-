@@ -45,7 +45,7 @@
             font-size: 1.35rem;
         }
 
-        /* Ίδιο ακριβώς στυλ με τη σελίδα του φοιτητή */
+        
         .prof-info {
             padding: 14px 25px;
             font-size: 0.95rem;
@@ -79,7 +79,7 @@
         }
 
         tr:hover {
-            background-color: #f8f5ec;     /* Ίδιο hover χρώμα */
+            background-color: #f8f5ec;     
         }
 
         .grade {
@@ -122,7 +122,7 @@
             <h2>Βαθμολογίες Μαθήματος</h2>
         </div>
 
-        <!-- Professor Info - Ίδιο στυλ με τον φοιτητή -->
+        
         <div class="prof-info">
             Καθηγητής: <strong><%= session.getAttribute("ProfessorName") %> <%= session.getAttribute("ProfessorSurname") %></strong>
             Ειδικότητα: <strong><%= session.getAttribute("ProfessorSpecialty") %></strong>

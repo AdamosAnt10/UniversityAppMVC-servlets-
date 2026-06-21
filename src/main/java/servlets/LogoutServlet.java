@@ -16,13 +16,13 @@ public class LogoutServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        // 1. Διαγραφή session
+       
         HttpSession session = request.getSession(false);
         if (session != null) {
             session.invalidate();
         }
 
-        // 2. Διαγραφή όλων των cookies
+        
         Cookie[] cookies = request.getCookies();
         if (cookies != null) {
             for (Cookie c : cookies) {
@@ -32,12 +32,12 @@ public class LogoutServlet extends HttpServlet {
             }
         }
 
-        // 3. Καθαρισμός cache
+        
         response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate");
         response.setHeader("Pragma", "no-cache");
         response.setDateHeader("Expires", 0);
 
-        // 4. Ανακατεύθυνση στο login
+      
         response.sendRedirect(request.getContextPath() + "/views/loginstud.jsp");
     }
 }

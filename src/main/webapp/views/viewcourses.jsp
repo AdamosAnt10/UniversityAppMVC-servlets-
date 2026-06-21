@@ -101,7 +101,7 @@
 <div class="content">
     <div class="grades-container">
 
-        <!-- Header -->
+       
         <div class="header">
             <h2>Λίστα Μαθημάτων και Υπεύθυνων Καθηγητών</h2>
         </div>

@@ -177,16 +177,15 @@
             Φοιτητής: <strong>${studentName}</strong>
         </div>
 
-        <!-- ΦΙΛΤΡΑ -->
+       
         <div class="filter-bar">
 
-            <!-- Ολες οι βαθμολογίες -->
+            - Ολες οι βαθμολογίες -->
             <form action="${pageContext.request.contextPath}/StudentServlet" method="GET">
                 <button type="submit" class="btn-secondary">Όλες οι Βαθμολογίες</button>
             </form>
 
-            <!-- Ανά εξάμηνο -->
-       <!-- Ανά εξάμηνο -->
+           
 		<form action="${pageContext.request.contextPath}/StudentServlet" method="GET">
     		<input type="hidden" name="action" value="bySemester">
     		<select name="semester" onchange="this.form.submit()">
@@ -202,7 +201,7 @@
     </select>
 </form>
 
-            <!-- Μέσος όρος -->
+           
             <form action="${pageContext.request.contextPath}/StudentServlet" method="GET">
                 <input type="hidden" name="action" value="average">
                 <button type="submit" class="btn-secondary">Μέσος Όρος</button>
@@ -216,14 +215,14 @@
                 <p style="color:red; text-align:center;">${errorMessage}</p>
             </c:if>
 
-            <!-- Εμφάνιση μέσου όρου αν επιλέχθηκε -->
+            
             <c:if test="${filterType == 'average'}">
                 <div class="average-box">
                     Συνολικός Μέσος Όρος: <strong><c:out value="${String.format('%.2f', average)}"/></strong>
                 </div>
             </c:if>
 
-            <!-- Εμφάνιση εξαμήνου αν επιλέχθηκε -->
+           
             <c:if test="${filterType == 'semester'}">
                 <p style="color:#0d1f3c; font-weight:bold;">
                     Βαθμολογία ${semester}ου Εξαμήνου
